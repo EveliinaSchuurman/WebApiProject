@@ -2,7 +2,7 @@ using System.Linq;
 using System;
 using System.Threading.Tasks;
 
-namespace GameWebApi{
+namespace WebApiProject{
     public class NewItem
     {
       

@@ -43,7 +43,7 @@
           "dependencies": {
             "FluentValidation": {
               "target": "Package",
-              "version": "[*, )"
+              "version": "[9.2.2, )"
             },
             "MongoDB.Driver": {
               "target": "Package",

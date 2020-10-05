@@ -72,7 +72,7 @@ namespace WebApiProject
         }
         public async Task<Player[]> GetPlayersWithItem(ItemType type){
             var playersWithWeapons = Builders<Player>.Filter.ElemMatch<Item>(p => p.itemList, 
-            Builders<Item>.Filter.Eq(i => i.Type, ItemType.SWORD));
+            Builders<Item>.Filter.Eq(i => i.Type, ItemType.POTION));
             List<Player> players =  await _playerCollection.Find(playersWithWeapons).ToListAsync();
             return players.ToArray();
         }
@@ -130,6 +130,8 @@ namespace WebApiProject
             return players.ToArray();
         }
 
+
+
         public async Task<Player[]> GetTopXPlayers(int Amount)
         {
             var filter = Builders<Player>.Filter.Empty;
@@ -145,6 +147,11 @@ namespace WebApiProject
             players.ToArray();
             return players[Xth -1];
         }
+        public async Task<Player> GetPlayerWithBestItem(){
+            return null;
+        }
+
+
 
 
 

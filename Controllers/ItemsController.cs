@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using FluentValidation;
 
-namespace GameWebApi.Controllers
+namespace WebApiProject.Controllers
 {
     [ApiController]
     [Route("players/{playerId}/items")]
@@ -75,6 +76,27 @@ namespace GameWebApi.Controllers
         {
             await _irepository.UpdateItem(playerId, item);
             return null;
+        }
+
+        [HttpPost] //{"Name":"yeet"}
+        
+        [Route("createSword")]
+        public async Task<Item> CreateSword([FromBody] Sword sword, Guid playerId)
+        {
+            DateTime localDate = DateTime.UtcNow;
+
+            Sword new_sword = new Sword();
+            LevelValidator validator = new LevelValidator();
+            new_sword.Name = sword.Name;
+            new_sword.Id = Guid.NewGuid();
+            
+            new_sword.Level = sword.Level;
+            new_sword.Type = sword.Type;
+            new_sword.CreationTime = localDate;
+            validator.ValidateAndThrow(new_sword);
+
+            await _irepository.CreateItem(playerId, new_sword);
+            return new_sword;
         }
 
     }

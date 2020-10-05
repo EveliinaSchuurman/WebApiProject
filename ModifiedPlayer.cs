@@ -1,7 +1,7 @@
 
 using System;
 
-namespace GameWebApi{
+namespace WebApiProject{
     public class ModifiedPlayer
     {
         public int Score { get; set; }
