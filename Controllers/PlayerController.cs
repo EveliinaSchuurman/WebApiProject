@@ -33,6 +33,7 @@ namespace WebApiProject.Controllers
             new_player.Level = 0;
             new_player.Active = player.Tag;
             new_player.CreationTime = localDate;
+            new_player.ItemScore = 0;
 
             await _irepository.CreatePlayer(new_player);
             return new_player;
@@ -143,5 +144,16 @@ namespace WebApiProject.Controllers
             return await _irepository.GetTop10Players();
         }
 
+        [HttpGet]
+        [Route("GetTopxPlayers/{Amount:int}")]
+        public async Task<Player[]> GetTopXPlayers(int Amount)
+        {
+            return await _irepository.GetTopXPlayers(Amount);
+        }
+        [HttpGet]
+        [Route("GetTopPlayer/{Xth:int}")]
+        public async Task<Player> GetTopPlayer(int Xth){
+            return await _irepository.GetTopPlayer(Xth);
+        }
     }
 }

@@ -21,6 +21,10 @@ namespace WebApiProject{
         Task<Player> SellForScore(Guid id, Guid itemId);
         Task<Player[]> GetTop10Players();
 
+        Task<Player[]> GetTopXPlayers(int Amount);
+        Task<Player> GetXthPlayer(int Xth);
+        Task<Player> GetPlayerWithBestItem();
+
 
         Task<Item> CreateItem(Guid playerId, Item item);
         Task<Item> GetItem(Guid playerId, Guid itemId);

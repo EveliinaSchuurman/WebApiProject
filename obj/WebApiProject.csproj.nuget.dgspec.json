@@ -41,9 +41,13 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "MongoDB.Driver": {
+            "FluentValidation": {
               "target": "Package",
               "version": "[*, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.11.2, )"
             }
           },
           "imports": [
